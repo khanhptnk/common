@@ -88,3 +88,10 @@ let g:tex_flavor='latex'
 let Tex_FoldedSections=""
 let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
+
+" Remove trailing whitespaces
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+" Highlight 80 char lines
+let &colorcolumn=join(range(81,999),",")
+
