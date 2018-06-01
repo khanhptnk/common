@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -11,6 +13,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'vim-airline/vim-airline-themes'
+
 Bundle 'nanotech/jellybeans.vim'
 
 " Vim latex-suite
@@ -35,9 +40,15 @@ filetype plugin indent on    " required
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
-" jellybeans
-set background=dark
-color jellybeans
+
+" colorscheme
+syntax enable
+" set background=dark
+" let g:solarized_termcolors=256
+" colorscheme solarized
+
+let g:airline_theme='papercolor'
+
 " Tab completion
 function! My_Tab_Completion()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -93,5 +104,5 @@ let Tex_FoldedMisc=""
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Highlight 80 char lines
-let &colorcolumn=join(range(81,999),",")
-
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/

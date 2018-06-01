@@ -132,6 +132,11 @@ alias gstat="git status -s"
 alias gadd="git add"
 alias gcom="git commit -m"
 alias gpush="git push"
+alias gdiff="git diff"
+alias gpull="git pull"
+alias rm="rm -rfI"
+alias sshcontext="ssh kxnguyen@context.umiacs.umd.edu"
+
 
 synclient AreaLeftEdge=1500
 synclient AreaRightEdge=5000
@@ -146,7 +151,7 @@ export LD_LIBRARY_PATH=/home/khanhptnk/torch/install/lib:$LD_LIBRARY_PATH  # Add
 export DYLD_LIBRARY_PATH=/home/khanhptnk/torch/install/lib:$DYLD_LIBRARY_PATH  # Added automatically by torch-dist
 
 
-export CUDA_HOME=/usr/local/cuda-7.5 
+export CUDA_HOME=/usr/local/cuda 
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$CUDA_HOME/lib 
  
 export MANPATH=/home/khanhptnk/.linuxbrew/share/man
@@ -167,3 +172,18 @@ export TWEET_TAGGER=$HOME/Code/ark-tweet-nlp-0.3.2
 export TWEET_DEP_PARSER=$HOME/Code/TweeboParser
 export CRF_SUITE=$HOME/Code/crfsuite-0.12/bin
 export MALLET=$HOME/Code/mallet-2.0.8RC3
+
+
+# added by Anaconda2 4.3.0 installer
+#export PATH="/home/khanhptnk/anaconda2/bin:$PATH"
+
+export MOSES=$HOME/Code/mosesdecoder/scripts
+
+# added by Anaconda3 installer
+export PATH="/home/khanhptnk/anaconda3/bin:$PATH"
+
+export GARGANTUA=$HOME/Code/Gargantua
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
