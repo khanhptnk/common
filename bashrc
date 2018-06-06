@@ -59,6 +59,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
 force_color_prompt=yes
 
 # enable color support of ls and also add handy aliases
@@ -95,3 +97,7 @@ alias gpush="git push"
 alias gdiff="git diff"
 alias gpull="git pull"
 alias rm="rm -rfI"
+
+# added by Anaconda2 installer
+export PATH="/home/kxnguyen/anaconda2/bin:$PATH"
+
