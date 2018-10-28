@@ -5,39 +5,33 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
+"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'nanotech/jellybeans.vim'
-
-" Vim latex-suite
-"Bundle 'gerw/vim-latex-suite'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-" powerline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set laststatus=2
+" End of Vundle
+
+execute pathogen#infect()
+
+syntax enable
+
+"set background=light
+"let g:solarized_termcolors=256
+"colorscheme solarized
+
+" let g:airline_theme='papercolor'
 set t_Co=256
-" jellybeans
 set background=dark
-color jellybeans
+colorscheme PaperColor
+
 " Tab completion
 function! My_Tab_Completion()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -64,6 +58,7 @@ set autowrite
 set incsearch
 set ignorecase
 set smartcase
+set cursorline
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
@@ -93,5 +88,6 @@ let Tex_FoldedMisc=""
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Highlight 80 char lines
-let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=darkgray
+set colorcolumn=80
 

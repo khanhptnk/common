@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -116,7 +116,7 @@ fi
 # ALIASES
 
 alias ll="ls -lhA"
-alias ls="ls -CF"
+alias l="ls -CF"
 alias lll="ls -lhFA | less"
 alias ..="cd .."
 alias openbash="vim ~/.bashrc"
@@ -128,27 +128,34 @@ alias ps="ps auxf | less"
 alias makenote="cp ~/Code/note.tex ."
 alias opennote="vim ~/Code/note.tex"
 alias countblank="grep -cvP '\S'"
+alias wcl="wc -l"
+
 alias gstat="git status -s"
 alias gadd="git add"
 alias gcom="git commit -m"
 alias gpush="git push"
+alias gpull="git pull"
+alias gdiff="git diff"
 
-synclient AreaLeftEdge=1500
-synclient AreaRightEdge=5000
+alias rm="rm -rI"
+alias python="python -u"
 
-TOUCHPAD_ID=`xinput | grep TouchPad | cut -f2 | cut -d'=' -f2`
-xinput --set-prop $TOUCHPAD_ID "Synaptics Finger" 30 50 150
+alias sshcontext="ssh kxnguyen@context.umiacs.umd.edu"
+alias clipsub0="ssh kxnguyen@clipsub00.umiacs.umd.edu"
+alias clipsub1="ssh kxnguyen@clipsub01.umiacs.umd.edu"
 
+alias gputemp="watch -n1 nvidia-smi -q -d temperature"
 
-export PATH=/home/khanhptnk/.linuxbrew/bin:/usr/local/cuda-7.0/bin:/home/khanhptnk/torch/install/bin:/home/khanhptnk/torch/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+export PATH=/home/khanhptnk/.linuxbrew/bin:/usr/local/cuda-9.1/bin:/home/khanhptnk/torch/install/bin:/home/khanhptnk/torch/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
-export LD_LIBRARY_PATH=/home/khanhptnk/torch/install/lib:$LD_LIBRARY_PATH  # Added automatically by torch-dist
 export DYLD_LIBRARY_PATH=/home/khanhptnk/torch/install/lib:$DYLD_LIBRARY_PATH  # Added automatically by torch-dist
 
+export CUDA_HOME=/usr/local/cuda-9.1
+#export CUDA_HOME=/usr/local/cuda-9.0
 
-export CUDA_HOME=/usr/local/cuda-7.5 
-export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$CUDA_HOME/lib 
- 
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64"
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
+
 export MANPATH=/home/khanhptnk/.linuxbrew/share/man
 export INFOPATH=/home/khanhptnk/.linuxbrew/share/info
 
@@ -167,3 +174,30 @@ export TWEET_TAGGER=$HOME/Code/ark-tweet-nlp-0.3.2
 export TWEET_DEP_PARSER=$HOME/Code/TweeboParser
 export CRF_SUITE=$HOME/Code/crfsuite-0.12/bin
 export MALLET=$HOME/Code/mallet-2.0.8RC3
+
+export FALL2016=$HOME/Code/fall_2016
+export NAMAS=$FALL2016/828z/NAMAS
+
+
+# added by Anaconda2 4.3.1 installer
+#export PATH="/home/khanhptnk/anaconda2/bin:$PATH"
+
+. /home/khanhptnk/torch/install/bin/torch-activate
+
+export EMNLP17_LOG=/home/khanhptnk/Code/pg-nmt/translate_log
+export EMNLP17_DATA=/home/khanhptnk/Code/pg-nmt/data
+
+# added by Anaconda3 4.4.0 installer
+#export PATH="/home/khanhptnk/anaconda3/bin:$PATH"
+
+export siminterp_home=$HOME/Code/neural-simtrans
+export siminterp_data=$siminterp_home/data
+export siminterp_temp=$siminterp_home/log
+export siminterp_save=$siminterp_home/log
+
+export PATH=/home/khanhptnk/Code/neural-simtrans/tools/fast_align/build:$PATH
+
+export GARGANTUA=$HOME/Code/Gargantua
+
+# added by Anaconda2 installer
+export PATH="/home/khanhptnk/anaconda2/bin:$PATH"
