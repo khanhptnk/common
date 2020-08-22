@@ -113,21 +113,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+countsub() {
+  find $1 -maxdepth 1 -mindepth 1 -type d -exec sh -c 'echo "{} : $(find "{}" -type f | wc -l)" file\(s\)' \;
+}
 
-force_color_prompt=yes
+countfile() {
+  for filename in $@; do
+    echo "$(wc -l $filename) file(s)"
+  done
+}
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
 
 # ALIASES
 
@@ -161,12 +156,14 @@ alias clipsub0="ssh kxnguyen@clipsub00.umiacs.umd.edu"
 alias clipsub1="ssh kxnguyen@clipsub01.umiacs.umd.edu"
 
 alias gputemp="watch -n1 nvidia-smi -q -d temperature"
+alias chrismachine="ssh -i $HOME/Documents/ProductOfScotland/chrismachine.key chrisbkt@104.46.107.147"
+alias chrismachine2="ssh -i /home/khanhptnk/Documents/ProductOfScotland/chrismachine.key chrisbkt@137.116.47.18"
 
 export PATH=/home/khanhptnk/.linuxbrew/bin:/usr/local/cuda-9.1/bin:/home/khanhptnk/torch/install/bin:/home/khanhptnk/torch/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 export DYLD_LIBRARY_PATH=/home/khanhptnk/torch/install/lib:$DYLD_LIBRARY_PATH  # Added automatically by torch-dist
 
-export CUDA_HOME=/usr/local/cuda-9.1
+export CUDA_HOME=/usr/local/cuda-10.0
 #export CUDA_HOME=/usr/local/cuda-9.0
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64"
@@ -204,7 +201,7 @@ export EMNLP17_LOG=/home/khanhptnk/Code/pg-nmt/translate_log
 export EMNLP17_DATA=/home/khanhptnk/Code/pg-nmt/data
 
 # added by Anaconda3 4.4.0 installer
-#export PATH="/home/khanhptnk/anaconda3/bin:$PATH"
+# export PATH="/home/khanhptnk/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 export siminterp_home=$HOME/Code/neural-simtrans
 export siminterp_data=$siminterp_home/data
@@ -216,5 +213,20 @@ export PATH=/home/khanhptnk/Code/neural-simtrans/tools/fast_align/build:$PATH
 export GARGANTUA=$HOME/Code/Gargantua
 
 # added by Anaconda2 installer
-export PATH="/home/khanhptnk/anaconda2/bin:$PATH"
+#export PATH="/home/khanhptnk/anaconda2/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/khanhptnk/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/khanhptnk/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/khanhptnk/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/khanhptnk/anaconda3/bin:$PATH"
+    fi
+fi
+# unset __conda_setup
+# <<< conda initialize <<<
 
